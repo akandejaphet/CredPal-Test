@@ -60,7 +60,8 @@ const EditProfile: React.FC<Props> = (props) =>{
                                 }
                                 ]}/>
                         <SettingList title="Salary" content="840000" type="number"/>
-                        <SettingList title="Next of Kin" content="Oshokoya Joseph" type="text"/>
+                        <View style={{height:10}}/>
+                        <SettingList title="Next of Kin" content="Oshokoya Joseph" type="text" topBorder={true}/>
                         <SettingList title="Relationship" content="Brother" type="option"  data={[
                                 {
                                     label:"Brother",
