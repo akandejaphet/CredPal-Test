@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         color:"#222222"
     },
     contentMargin:{
-        paddingVertical:40
+        paddingVertical:14
     },
     list:{
 
