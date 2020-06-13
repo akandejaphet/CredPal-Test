@@ -15,7 +15,7 @@ const SettingList : React.FC<Props> = (props) =>{
     const data = props.data?props.data:[]
     
     return (
-        <View style={{borderTopWidth:props.topBorder?1:0, borderBottomWidth:1, borderColor:"#22222230", height:62, justifyContent:"space-between", flexDirection:"row"}}>
+        <View style={{borderTopWidth:props.topBorder?1:0, borderBottomWidth:1, borderColor:"#22222230", height:55, justifyContent:"space-between", flexDirection:"row"}}>
             <View style={{justifyContent:"center", height:"100%"}}>
                 <Text style={{color:"#222222", fontSize:14}}>{props.title}</Text>
             </View>
