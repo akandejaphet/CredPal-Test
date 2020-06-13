@@ -28,7 +28,7 @@ const SettingList : React.FC<Props> = (props) =>{
                             <RNPickerSelect
                                 onValueChange={(value) => console.log(value)}
                                 items={data}
-                                style={{inputAndroid:{height:25, color:"#22222250", textAlign:"right", marginRight:48},inputIOS:{height:25, color:"#22222250", textAlign:"right", marginRight:48}}}
+                                style={{inputAndroid:{height:25, color:"#22222250"},inputIOS:{height:25, color:"#22222250", textAlign:"right", marginRight:48}}}
                                 textInputProps={{underlineColorAndroid:"yellow"}}
                                 placeholder={{}}
                                 Icon={()=><View style={{marginRight:20, marginTop:11}}><Image source={require(`../assets/dropdown.png`)}/></View>}

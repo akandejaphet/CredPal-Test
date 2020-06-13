@@ -48,12 +48,12 @@ const Input: React.FC<Props> = (props) =>{
     ];
 
     return(
-        <View style={{flex:.48, height:45, borderBottomWidth:1, borderBottomColor:"#55555520", flexDirection:"row", marginBottom:10}}>
+        <View style={{flex:.48, height:Platform.OS=="ios"?45:56, borderBottomWidth:1, borderBottomColor:"#55555520", flexDirection:"row", marginBottom:10}}>
             <View style={{justifyContent:"center", marginTop:5}}>
 
                 <Image source={props.icon?icon:null} height={11} width={11} style={{minWidth:11}}/>
             </View>
-            <View style={{width:"100%", paddingLeft:8, marginBottom:7}}>
+            <View style={{width:"100%", paddingLeft:8, marginBottom:Platform.OS=="ios"?7:0}}>
 
                 <Text style={[styles.accent, styles.normalText, {paddingLeft:7}]}>{props.title}</Text>
                 {
