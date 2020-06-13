@@ -18,12 +18,12 @@ const TabbedView : React.FC<Props> = (props) =>{
 
 		tab.push(
             <>
+
                 {
-                    i==0||i==props.value.length-1?
+                    i!=0||i==props.value.length-1?
                         <Image source={require('../assets/line.png')} style={{alignSelf:"center"}}/>
                     :null
                 }
-
                 <TouchableOpacity  style={{flex:.333, justifyContent:"center", height:34, backgroundColor:selected==i?"#274FED":"transparent", borderRadius:7}} key={i} onPress={()=>{props.onStateChange(); setSelected(i)}}>
                     <Text style={{textAlign:"center", color:selected==i?"#ffffff":"#222222", opacity:selected==i?1:.5, fontSize:12}}>{props.value[i].title}</Text>
                 </TouchableOpacity>

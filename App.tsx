@@ -40,11 +40,14 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
         <Stack.Navigator initialRouteName="Home" screenOptions={{
           cardStyle:{backgroundColor:Colors.white},
           headerStyle:{
-            elevation:0
+            elevation:0,
+            shadowOffset:{
+              height:0
+            }
           }
         }}
         >

@@ -19,7 +19,8 @@ const CompleteProfile: React.FC<Props> = (props) =>{
           <Text style={{marginRight:(Dimensions.get("screen").width/16), color:"#555555", fontSize:14}}>Step {currentScreen} of 5</Text>
         ),
         headerTintColor:"#555555",
-        headerTitle:null
+        headerTitle:null,
+        headerBackTitleVisible:false
       })
     })
     
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
         color:"#222222"
     },
     contentMargin:{
-        paddingVertical:42
+        paddingVertical:23
     },
     list:{
 

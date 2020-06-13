@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Image, TextInput} from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, Platform} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 interface Props{
     title: string
@@ -16,7 +16,7 @@ interface Props{
 const Input: React.FC<Props> = (props) =>{
     const placeholder = props.placholder?props.placholder:"select"
     const [input, setInput] = useState({
-        date:869270400000
+        date:"1997-07-19"
     })
     const [date, setDate] = useState(false)
     const data = props.data?props.data:[]
@@ -48,43 +48,43 @@ const Input: React.FC<Props> = (props) =>{
     ];
 
     return(
-        <View style={{flex:.48, height:56, borderBottomWidth:1, borderBottomColor:"#55555520", flexDirection:"row"}}>
-            <View style={{justifyContent:"center"}}>
+        <View style={{flex:.48, height:45, borderBottomWidth:1, borderBottomColor:"#55555520", flexDirection:"row", marginBottom:10}}>
+            <View style={{justifyContent:"center", marginTop:5}}>
 
                 <Image source={props.icon?icon:null} height={11} width={11} style={{minWidth:11}}/>
             </View>
-            <View style={{width:"100%", paddingLeft:8}}>
+            <View style={{width:"100%", paddingLeft:8, marginBottom:7}}>
 
                 <Text style={[styles.accent, styles.normalText, {paddingLeft:7}]}>{props.title}</Text>
                 {
                     props.type == "date"?
-                        <View>
+                        <View style={{flex:1,justifyContent:"center"}}>
                             <View style={{paddingLeft:7, flexDirection:"row", justifyContent:"space-between", paddingRight:10}}>
                                 <Text onPress={()=>setDate(!date)}>{( monthNames[new Date(input.date).getMonth()])+" "+(new Date(input.date).getDate())+", "+(new Date(input.date).getFullYear())}</Text>
                                 <Image source={require(`../assets/dropdown.png`)} style={{alignSelf:"center"}}/>
                             </View>
-                            {date?
-                                <DateTimePicker
-                                    testID="dateTimePicker"
-                                    value={new Date(input.date)}
-                                    mode="date"
-                                    is24Hour={true}
-                                    display="default"
-                                    onChange={(data)=>data.nativeEvent.timestamp?setInput({date:data.nativeEvent.timestamp}):null}
-                                />
-                            :null
-                            }
+                            <DateTimePickerModal
+                                isVisible={date}
+                                testID="dateTimePicker"
+                                mode="date"
+                                is24Hour={true}
+                                display="default"
+                                onConfirm={(data)=>{setDate(!date);setInput({date:data})}}
+                                onCancel={()=>setDate(!date)}
+                            />
                         </View>
                     :
                     props.type == "option"?
-                        <RNPickerSelect
-                            onValueChange={(value) => console.log(value)}
-                            items={data}
-                            placeholder={{}}
-                            style={{inputAndroid:{height:25}}}
-                            // Icon={()=><View style={{justifyContent:"center", marginRight:20, height:"100%", backgroundColor:"yellow"}}><Image source={require(`../assets/dropdown.png`)} style={{alignSelf:"center"}}/></View>}
-                        />  
-                    :<View style={{flex:1}}>
+                        <View style={{flex:1, justifyContent:"center", marginLeft:Platform.OS=="ios"?7:0}}>
+                            <RNPickerSelect
+                                onValueChange={(value) => console.log(value)}
+                                items={data}
+                                placeholder={{}}
+                                style={{inputAndroid:{height:25}}}
+                                Icon={()=><View style={{marginRight:20, marginTop:6}}><Image source={require(`../assets/dropdown.png`)}/></View>}
+                            />  
+                        </View>
+                    :<View style={{flex:1, justifyContent:"center"}}>
                         <TextInput keyboardType={props.type == "number"?"number-pad":"default"} placeholder={props.placholder} value={props.type=="number"?props.value.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3'):props.value} style={{paddingLeft:7, color:"#222222", fontSize:13}} placeholderTextColor="#555555" numberOfLines={1}/>
                     </View>
                 }

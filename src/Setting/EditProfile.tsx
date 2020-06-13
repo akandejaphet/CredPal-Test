@@ -19,7 +19,9 @@ const EditProfile: React.FC<Props> = (props) =>{
           </TouchableOpacity>
         ),
         headerTintColor:"#FE2B5E",
-        headerTitleAlign:"left"
+        headerTitleAlign:"left",
+        headerTruncatedBackTitle:"Discard",
+        headerTitle:null
       })
     props.navigation.setOptions({ title: 'Discard' })
     })
