@@ -8,6 +8,7 @@ interface Props{
 }
 
 const TabbedPill : React.FC<Props> = (props) =>{
+    //This functional component will be able to handle any amount of pills and still be operational because of its dynamic nature
     
   const [current, setCurrent] = React.useState(props.current);
 
@@ -25,7 +26,7 @@ const TabbedPill : React.FC<Props> = (props) =>{
   }
 
     return(
-        <View style={{flexDirection:"row", justifyContent:"space-between"}}>
+        <View style={styles.pillContainer}>
             {pill}
         </View>
     )
@@ -37,6 +38,10 @@ const styles = StyleSheet.create({
         height:4,
         backgroundColor:"#274FED",
         borderRadius:2.5
+    },
+    pillContainer:{
+        flexDirection:"row", 
+        justifyContent:"space-between"
     }
 })
 

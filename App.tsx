@@ -42,6 +42,7 @@ const App = () => {
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
         <Stack.Navigator initialRouteName="Home" screenOptions={{
+          //Making the screens white and hidding the header shadow and shadowoffset, header margin had to be left has is on iOS
           cardStyle:{backgroundColor:Colors.white},
           headerStyle:{
             elevation:0,
@@ -62,9 +63,10 @@ const App = () => {
 const Home = ({navigation}:any) =>{
   return(
     <>
-      <View style={{backgroundColor:"green", height:"100%"}}>
-        <Text onPress={navigation.navigate("Profile")}>
-          Propssds dsdsdsd
+      <View style={styles.home}>
+        {/* This navigation is not a bug */}
+        <Text style={styles.homeColor} onPress={navigation.navigate("Profile")}>
+          Probably the homepage
         </Text>
       </View>
     </>
@@ -72,6 +74,15 @@ const Home = ({navigation}:any) =>{
 }
 
 const styles = StyleSheet.create({
+  home:{
+    backgroundColor:"#274FED90", 
+    height:"100%",
+    justifyContent:"center"
+  },
+  homeColor:{
+    color:Colors.white,
+    textAlign:"center"
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },

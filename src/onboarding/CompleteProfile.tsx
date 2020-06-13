@@ -14,6 +14,7 @@ const CompleteProfile: React.FC<Props> = (props) =>{
     const [screenCount, setScreenCount] = useState(5)
 
   React.useLayoutEffect(()=>{
+      //Hook into the nvigation options
     props.navigation.setOptions({
         headerRight: () => (
           <Text style={{marginRight:(Dimensions.get("screen").width/16), color:"#555555", fontSize:14}}>Step {currentScreen} of 5</Text>
@@ -118,6 +119,7 @@ const CompleteProfile: React.FC<Props> = (props) =>{
                 </View>
 
                 <View style={[styles.contentMargin, styles.buttonView]}>
+                    {/* Moves to imaginary screens here */}
                     <TouchableOpacity style={styles.button} onPress={()=>currentScreen < screenCount ? setCurrentScreen(currentScreen+1): props.navigation.navigate("Settings")}>
                         <Text style={{textAlign:"center", color:"white", fontWeight:"500", fontSize:14}}>{currentScreen != screenCount ?"NEXT":"FINISH"}</Text>
                     </TouchableOpacity>
